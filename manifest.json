@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "WikiFlashCards",
+  "version": "1.0",
+  "description": "Easily save vocab words from Wikipedia in your target language",
+
+  "icons": {
+  },
+  "content_scripts": [
+    {
+      "js": [],
+      "matches": [
+        "https://developer.chrome.com/docs/extensions/*",
+        "https://developer.chrome.com/docs/webstore/*"
+      ]
+    }
+  ]
+}
