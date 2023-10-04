@@ -8,10 +8,16 @@
   },
   "content_scripts": [
     {
-      "js": [],
+      "js": [
+        "scripts/highlight.js",
+        "scripts/popup.js"
+      ],
+      "css": ["style/styles.css"],
       "matches": [
         "https://developer.chrome.com/docs/extensions/*",
-        "https://developer.chrome.com/docs/webstore/*"
+        "https://developer.chrome.com/docs/webstore/*",
+        "https://*.wikipedia.org/wiki/*",
+        "https://stackoverflow.com/questions/*"
       ]
     }
   ]

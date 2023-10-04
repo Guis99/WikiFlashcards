@@ -1,0 +1,27 @@
+.highlighted-text {
+  background-color: yellow;
+  font-weight: bold;
+}   
+
+#popup-container {
+  position: relative;
+  display: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 9999; /* Make sure it's on top of other elements */
+}
+
+#popup-tag{
+  position:absolute;
+  display:none;
+  background-color:#785448d4;
+  color:white;
+  padding:10px;
+  font-size:20px;
+  font-weight:bold;
+  text-decoration:underline;
+  cursor:pointer;
+  -webkit-filter: drop-shadow(0 1px 10px rgba(113,158,206,0.8));
+  }
