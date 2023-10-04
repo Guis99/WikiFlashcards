@@ -8,10 +8,10 @@ var highlightedText;
 var htmlContent;
 var selection;
 
-const infoPopup = document.createElement('span');
-infoPopup.id = 'popup-container';
-infoPopup.textContent = '';
-document.body.append(infoPopup);
+const popupContainer = document.createElement('span');
+popupContainer.id = 'popup-container';
+popupContainer.textContent = '';
+document.body.append(popupContainer);
 
 // Listen for mouseup event to detect text selection
 document.addEventListener("mouseup", function(event) {
@@ -42,6 +42,7 @@ document.addEventListener("mouseup", function(event) {
       range.deleteContents();
       range.insertNode(spanElement);
       showPopup(highlightedText,event.clientX,event.clientY);
+      // range.insertNode(popupContainer);
 
       highlightExists = true;
 
