@@ -11,12 +11,15 @@ let originalContent = [];
 
 // Listen for mouseup event to detect text selection
 
+const popupWrapper = document.createElement('div');
+document.body.append(popupWrapper);
+
+
 document.addEventListener("mouseup", function(event) {
   const selection = window.getSelection();
-
-  if (highlightExists && selection.isCollapsed) {
-    console.log("remove highlight");
-    removePopup();
+  console.log(event.target.className);
+  if (highlightExists && selection.isCollapsed && !event.target.className.includes('popup')) {
+    removePopups();
     // range.deleteContents();
     // range.insertNode(htmlContent);
     highlightExists = false;

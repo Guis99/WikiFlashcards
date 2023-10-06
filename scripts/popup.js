@@ -9,7 +9,7 @@ function createPopup(text, x, y) {
 
 
     const popupDeleter = document.createElement('div');
-    popupDeleter.className = 'close';
+    popupDeleter.className = 'popup-close';
     popupDeleter.textContent = 'close'
     popupDeleter.onclick = closePopup;
 
@@ -21,10 +21,10 @@ function createPopup(text, x, y) {
 
     popupContainer.appendChild(headerContainer);
 
-    document.body.append(popupContainer);
+    popupWrapper.appendChild(popupContainer);
 }
 
-function removePopup() {
+function removePopups() {
     const popupContainers = document.getElementsByClassName('popup-container');
 
     for (var i=popupContainers.length-1; i>=0; i-=1){
@@ -38,6 +38,17 @@ function removePopup() {
 }
 
 function closePopup() {
-    console.log('close popup');
+    var curr = this.parentNode;
+    var popupIdx = 0;
+    while (curr.previousElementSibling != null) {
+        popupIdx++;
+        curr = curr.previousElementSibling;
+    }
+
+    highlightedRanges[popupIdx].deleteContents();
+    highlightedRanges[popupIdx].insertNode(originalContent[popupIdx]);
+
+    highlightedRanges.splice(popupIdx,1);
+    originalContent.splice(popupIdx,1);
     this.parentNode.remove();
 }

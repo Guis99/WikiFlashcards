@@ -19,7 +19,7 @@
   border-width: 5px;
 }
 
-.close {
+.popup-close {
   background-color: rgb(241, 241, 241);
   font-size: 10px;
   cursor: pointer;
