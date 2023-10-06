@@ -3,7 +3,7 @@
   font-weight: bold;
 }   
 
-#popup-container {
+.popup-container {
   position: absolute;
   display: none;
   background-color: #fff;
@@ -13,7 +13,19 @@
   z-index: 9999; /* Make sure it's on top of other elements */
 }
 
-#popup-tag{
+.popup-header {
+  font-weight: bold;
+  border-color: red;
+  border-width: 5px;
+}
+
+.close {
+  background-color: rgb(241, 241, 241);
+  font-size: 10px;
+  cursor: pointer;
+}
+
+/* .popup-tag{
   position:absolute;
   display:none;
   background-color:#785448d4;
@@ -24,4 +36,4 @@
   text-decoration:underline;
   cursor:pointer;
   -webkit-filter: drop-shadow(0 1px 10px rgba(113,158,206,0.8));
-  }
+  } */

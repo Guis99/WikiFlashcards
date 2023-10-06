@@ -3,31 +3,29 @@ const highlightClass = "highlighted-text";
 
 // Declare variables to hold text data
 var highlightExists = false;
-var range;
-var highlightedText;
-var htmlContent;
-var selection;
 
-const popupContainer = document.createElement('span');
-popupContainer.id = 'popup-container';
-popupContainer.textContent = '';
-document.body.append(popupContainer);
+let highlightedRanges = [];
+let originalContent = [];
+
+// console.log(API_KEY_GOOGLE);
 
 // Listen for mouseup event to detect text selection
+
 document.addEventListener("mouseup", function(event) {
-  if (highlightExists) {
-    hidePopup();
-    range.deleteContents();
-    range.insertNode(htmlContent);
+  const selection = window.getSelection();
+
+  if (highlightExists && selection.isCollapsed) {
+    console.log("remove highlight");
+    removePopup();
+    // range.deleteContents();
+    // range.insertNode(htmlContent);
     highlightExists = false;
   } 
-  
-  else {
-    selection = window.getSelection();
-    if (!selection.isCollapsed) { 
-      range = selection.getRangeAt(0);
-      htmlContent = range.cloneContents();
-      highlightedText = range.toString();
+
+  else if (!selection.isCollapsed) {
+      const range = selection.getRangeAt(0);
+      const htmlContent = range.cloneContents();
+      const highlightedText = range.toString();
 
 
       // Create a <span> element to wrap the highlighted text
@@ -35,19 +33,21 @@ document.addEventListener("mouseup", function(event) {
       spanElement.className = highlightClass;
       spanElement.textContent = highlightedText;
 
-      console.log(event.clientX);
-      console.log(event.clientY);
+      const coordX = event.clientX + window.scrollX;
+      const coordY = event.clientY + window.scrollY;
 
-      // Replace the selected range with the <span> element
       range.deleteContents();
-      range.insertNode(spanElement);
-      showPopup(highlightedText,event.clientX,event.clientY);
-      // range.insertNode(popupContainer);
+
+      range.insertNode(spanElement);     
+      createPopup(highlightedText,coordX,coordY);
+
+      highlightedRanges.push(range);
+      originalContent.push(htmlContent);
 
       highlightExists = true;
 
       // Clear the selection
       selection.removeAllRanges();
-    }
   }
-});  
+}
+);  
