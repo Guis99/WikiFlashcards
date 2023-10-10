@@ -11,7 +11,7 @@
       "js": [
         "./highlight.js",
         "./makePopup.js",
-        "./config.js"
+        "./configKey.js"
       ],
       "css": ["./styles.css"],
       "matches": [

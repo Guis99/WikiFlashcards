@@ -1,4 +1,3 @@
-API_KEY = 'AIzaSyDVJh49-WGYns4iYWh2gzdl7-90FvRgBaA';
 requestURL = 'https://translation.googleapis.com/language/translate/v2?key='+API_KEY;
 
 console.log(requestURL);

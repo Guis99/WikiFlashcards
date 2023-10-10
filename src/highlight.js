@@ -58,6 +58,7 @@ document.addEventListener("mouseup", function(event) {
 const inputText = 'Hello, world!';
 
 async function translateText(text) {
+  const key = 'nonsense'
   const API_KEY = key;
   const requestURL = 'https://translation.googleapis.com/language/translate/v2?key='+API_KEY;
   console.log(requestURL);

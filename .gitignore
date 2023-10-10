@@ -5,5 +5,5 @@
 _debug
 _metadata
 
-/src/config.js
+/src/configKey.js
 node_modules
