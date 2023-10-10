@@ -5,4 +5,5 @@
 _debug
 _metadata
 
-/scripts/config/SECRETS.js
+/src/config.js
+node_modules

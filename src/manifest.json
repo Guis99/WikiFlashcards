@@ -9,16 +9,20 @@
   "content_scripts": [
     {
       "js": [
-        "scripts/highlight.js",
-        "scripts/popup.js"
+        "./highlight.js",
+        "./makePopup.js",
+        "./config.js"
       ],
-      "css": ["style/styles.css"],
+      "css": ["./styles.css"],
       "matches": [
         "https://developer.chrome.com/docs/extensions/*",
         "https://developer.chrome.com/docs/webstore/*",
         "https://*.wikipedia.org/wiki/*",
         "https://stackoverflow.com/questions/*"
-      ]
+      ],
+      "background": {
+        "service_worker": "./background.js"
+      }
     }
   ]
 }
