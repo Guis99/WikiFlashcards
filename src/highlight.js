@@ -43,6 +43,8 @@ document.addEventListener("mouseup", function(event) {
 
       range.insertNode(spanElement);     
       createPopup(highlightedText,coordX,coordY);
+      translateText(highlightedText);
+
 
       highlightedRanges.push(range);
       originalContent.push(htmlContent);
@@ -51,6 +53,8 @@ document.addEventListener("mouseup", function(event) {
 
       // Clear the selection
       selection.removeAllRanges();
+      bruh();
+
   }
 }
 );  
@@ -58,10 +62,8 @@ document.addEventListener("mouseup", function(event) {
 const inputText = 'Hello, world!';
 
 async function translateText(text) {
-  const key = 'nonsense'
-  const API_KEY = key;
+  const API_KEY = getKey();
   const requestURL = 'https://translation.googleapis.com/language/translate/v2?key='+API_KEY;
-  console.log(requestURL);
     // Construct request
     // const request = {
     //     method: "POST",      
@@ -75,7 +77,7 @@ async function translateText(text) {
       "method": "POST",
       "mode": 'no-cors',
       "headers": {
-        "q": [text],
+        "q": text,
         "target": 'ru'
       }
   };
@@ -86,5 +88,3 @@ async function translateText(text) {
 
       console.log(response);
 }
-
-translateText(inputText);

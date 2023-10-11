@@ -52,3 +52,7 @@ function closePopup() {
     originalContent.splice(popupIdx,1);
     this.parentNode.remove();
 }
+
+function bruh() {
+    console.log('hi');
+}
