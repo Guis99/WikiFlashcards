@@ -6,6 +6,10 @@
 
   "icons": {
   },
+
+  "background": {
+    "service_worker": "./background.js"
+  },
   "content_scripts": [
     {
       "js": [
@@ -19,10 +23,7 @@
         "https://developer.chrome.com/docs/webstore/*",
         "https://*.wikipedia.org/wiki/*",
         "https://stackoverflow.com/questions/*"
-      ],
-      "background": {
-        "service_worker": "./background.js"
-      }
+      ]
     }
   ]
 }

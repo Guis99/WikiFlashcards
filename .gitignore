@@ -6,4 +6,5 @@ _debug
 _metadata
 
 /src/configKey.js
+/TestApi/**
 node_modules

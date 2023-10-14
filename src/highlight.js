@@ -14,6 +14,7 @@ let originalContent = [];
 const popupWrapper = document.createElement('div');
 document.body.append(popupWrapper);
 
+var port = chrome.runtime.connect({name: "tChannel"});
 
 document.addEventListener("mouseup", function(event) {
   const selection = window.getSelection();
@@ -43,7 +44,11 @@ document.addEventListener("mouseup", function(event) {
 
       range.insertNode(spanElement);     
       createPopup(highlightedText,coordX,coordY);
-      translateText(highlightedText);
+
+      port.postMessage({request: "translateText", content: highlightedText});
+      port.onMessage.addListener(async (msg) => {
+        console.log(msg.response);
+      });
 
 
       highlightedRanges.push(range);
@@ -53,38 +58,6 @@ document.addEventListener("mouseup", function(event) {
 
       // Clear the selection
       selection.removeAllRanges();
-      bruh();
-
   }
 }
 );  
-
-const inputText = 'Hello, world!';
-
-async function translateText(text) {
-  const API_KEY = getKey();
-  const requestURL = 'https://translation.googleapis.com/language/translate/v2?key='+API_KEY;
-    // Construct request
-    // const request = {
-    //     method: "POST",      
-    //     contents: [text],
-    //     mimeType: 'text/plain', // mime types: text/plain, text/html
-    //     sourceLanguageCode: 'en',
-    //     targetLanguageCode: 'es',
-    // };
-
-    const request = {     
-      "method": "POST",
-      "mode": 'no-cors',
-      "headers": {
-        "q": text,
-        "target": 'ru'
-      }
-  };
-
-    // Run request
-    const [response] = await fetch(requestURL,
-      request);
-
-      console.log(response);
-}
